@@ -11,6 +11,7 @@ public:
 
 	Polinom operator+(Monom& m);
 	Polinom operator+(Polinom & p);
+	Monom& operator[](size_t index);
 	Polinom& operator=(Polinom& p);
 
 	friend std::ostream& operator<<(std::ostream& , Polinom&);
@@ -87,6 +88,17 @@ Polinom Polinom::operator+(Polinom& p)
 	}
 
 	return tmp;
+}
+
+Monom & Polinom::operator[](size_t index)
+{
+	int i = 0;
+	for (Monom& elem : monoms)
+	{
+		if (i++ == index)
+			return elem;
+	}
+	throw 1;
 }
 
 
